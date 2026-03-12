@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Avero — Privacy Policy</title>
+<meta name="description" content="Avero Privacy Policy — how we handle your data. Short answer: we don't. All processing is on-device."/>
+<meta name="theme-color" content="#03050D"/>
+<link rel="icon" href="AveroLogo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:      #03050D;
+  --bg2:     #060A16;
+  --surf:    #080E1C;
+  --surfhi:  #0C1428;
+  --line:    rgba(255,255,255,.07);
+  --line2:   rgba(255,255,255,.12);
+  --line3:   rgba(255,255,255,.18);
+  --c:       #00C8F0;
+  --cg:      rgba(0,200,240,.15);
+  --g:       #28D98A;
+  --r:       #E84D5C;
+  --a:       #F5A623;
+  --w:       rgba(235,243,255,.93);
+  --m:       rgba(175,200,225,.65);
+  --d:       rgba(130,160,190,.38);
+  --serif:   'Playfair Display',Georgia,serif;
+  --sans:    'Inter',system-ui,sans-serif;
+  --ease:    cubic-bezier(.22,1,.36,1);
+  --ease2:   cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--w);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--c);text-decoration:none}
+a:hover{text-decoration:underline}
+img{display:block}
+button{font-family:var(--sans);cursor:pointer;border:none;background:none}
+
+/* BACKGROUND */
+.bg-layer{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80vw 60vh at 20% 0%,rgba(0,200,240,.08) 0%,transparent 70%),
+    radial-gradient(ellipse 60vw 50vh at 85% 15%,rgba(0,140,200,.05) 0%,transparent 70%),
+    radial-gradient(ellipse 70vw 50vh at 10% 90%,rgba(0,100,180,.04) 0%,transparent 70%);
+}
+.bg-grid{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 30%,transparent 80%);
+}
+
+/* LAYOUT */
+.page{position:relative;z-index:2}
+.w{max-width:860px;margin:0 auto;padding:0 32px}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.01em;
+  padding:10px 20px;border-radius:12px;
+  border:1px solid var(--line3);
+  background:rgba(255,255,255,.06);
+  color:var(--w);
+  transition:all .2s var(--ease2);
+  white-space:nowrap;cursor:pointer;
+  text-decoration:none;
+}
+.btn:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);transform:translateY(-1px);text-decoration:none}
+.btn-c{
+  background:var(--c);color:#011018;
+  border-color:transparent;
+  box-shadow:0 0 28px rgba(0,200,240,.24);
+  font-weight:700;
+}
+.btn-c:hover{background:#1ad4ff;box-shadow:0 0 40px rgba(0,200,240,.36);transform:translateY(-2px)}
+.btn-ghost{background:transparent;border-color:var(--line2);color:var(--m)}
+.btn-ghost:hover{color:var(--w);border-color:var(--line3)}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;width:100%;z-index:200;
+  transition:transform .4s var(--ease);
+}
+.nav.hide{transform:translateY(-100%)}
+.nav-pill{
+  margin:12px 24px 0;
+  background:rgba(6,10,22,.82);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border:1px solid var(--line2);
+  border-radius:20px;
+  padding:0 20px;
+  height:54px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand:hover{text-decoration:none}
+.brand-img{
+  width:28px;height:28px;border-radius:8px;object-fit:contain;
+  filter:drop-shadow(0 0 8px rgba(0,200,240,.4));
+}
+.brand-name{font-size:15px;font-weight:700;letter-spacing:-.02em;color:var(--w)}
+
+/* HERO SECTION */
+.pp-hero{
+  padding:130px 0 60px;
+  border-bottom:1px solid var(--line);
+}
+.pp-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--c);margin-bottom:20px;
+}
+.pp-tag-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--c);box-shadow:0 0 8px var(--c);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.75);opacity:.5}}
+
+.pp-hero h1{
+  font-family:var(--serif);
+  font-size:clamp(38px,5vw,62px);
+  font-weight:400;line-height:1.04;letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.pp-hero h1 em{font-style:italic;color:var(--c)}
+.pp-hero-sub{
+  font-size:15px;line-height:1.7;color:var(--m);
+  max-width:52ch;margin-bottom:32px;font-weight:300;
+}
+.pp-meta{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+}
+.pp-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;color:var(--m);font-weight:400;
+  padding:6px 12px;border-radius:999px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+}
+.pp-pill-dot{width:5px;height:5px;border-radius:50%;background:var(--g)}
+
+/* SUMMARY CARDS */
+.summary-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin:52px 0;
+}
+.scard{
+  background:var(--surf);border:1px solid var(--line2);
+  border-radius:20px;padding:22px 20px;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.scard:hover{background:var(--surfhi)}
+.scard::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,200,240,.35),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.scard:hover::after{opacity:1}
+.scard-ico{font-size:22px;margin-bottom:12px}
+.scard-title{font-size:13px;font-weight:600;margin-bottom:5px;color:var(--w)}
+.scard-desc{font-size:12px;color:var(--m);line-height:1.55;font-weight:300}
+.scard.green .scard-ico-wrap{
+  display:inline-flex;padding:8px;border-radius:10px;
+  background:rgba(40,217,138,.08);border:1px solid rgba(40,217,138,.18);
+  margin-bottom:12px;
+}
+
+/* CONTENT */
+.pp-content{
+  padding:52px 0 100px;
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:48px;
+  align-items:start;
+}
+.pp-toc{
+  position:sticky;top:82px;
+  display:flex;flex-direction:column;gap:2px;
+}
+.pp-toc-title{
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--d);margin-bottom:12px;padding:0 10px;
+}
+.toc-link{
+  font-size:12px;color:var(--m);font-weight:400;
+  padding:7px 10px;border-radius:8px;
+  transition:color .2s,background .2s;
+  text-decoration:none;display:block;
+  border:1px solid transparent;
+}
+.toc-link:hover{color:var(--w);background:rgba(255,255,255,.04);text-decoration:none;border-color:var(--line)}
+.toc-link.active{color:var(--c);background:rgba(0,200,240,.06);border-color:rgba(0,200,240,.15)}
+
+/* SECTIONS */
+.pp-sections{display:flex;flex-direction:column;gap:0}
+.pp-section{
+  padding:36px 0;
+  border-bottom:1px solid var(--line);
+}
+.pp-section:last-child{border-bottom:none}
+.section-num{
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--c);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-num::after{
+  content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,rgba(0,200,240,.2),transparent);
+}
+.pp-section h2{
+  font-family:var(--serif);
+  font-size:clamp(20px,2.2vw,26px);
+  font-weight:400;letter-spacing:-.02em;
+  margin-bottom:14px;line-height:1.15;
+}
+.pp-section h2 em{font-style:italic;color:var(--c)}
+.pp-section p{
+  font-size:14px;line-height:1.75;color:var(--m);
+  margin-bottom:12px;font-weight:300;
+}
+.pp-section p:last-child{margin-bottom:0}
+.pp-section ul{
+  list-style:none;
+  display:flex;flex-direction:column;gap:10px;
+  margin:14px 0;
+}
+.pp-section ul li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:14px;color:var(--m);line-height:1.6;font-weight:300;
+}
+.li-dot{
+  flex:0 0 auto;
+  width:16px;height:16px;border-radius:5px;margin-top:2px;
+  background:rgba(0,200,240,.07);border:1px solid rgba(0,200,240,.18);
+  display:flex;align-items:center;justify-content:center;
+}
+.li-dot svg{width:9px;height:9px}
+
+/* CALLOUT BOXES */
+.callout{
+  border-radius:16px;padding:16px 18px;
+  margin:16px 0;font-size:13px;line-height:1.65;
+}
+.callout.green{
+  background:rgba(40,217,138,.05);
+  border:1px solid rgba(40,217,138,.18);
+  color:rgba(175,225,200,.85);
+}
+.callout.cyan{
+  background:rgba(0,200,240,.05);
+  border:1px solid rgba(0,200,240,.18);
+  color:rgba(175,220,235,.85);
+}
+.callout.amber{
+  background:rgba(245,166,35,.05);
+  border:1px solid rgba(245,166,35,.18);
+  color:rgba(235,210,155,.85);
+}
+.callout-title{
+  font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:6px;display:flex;align-items:center;gap:7px;
+}
+.callout.green .callout-title{color:var(--g)}
+.callout.cyan .callout-title{color:var(--c)}
+.callout.amber .callout-title{color:var(--a)}
+
+/* PERMISSION CARDS */
+.perm-grid{display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.perm-card{
+  background:rgba(255,255,255,.02);border:1px solid var(--line);
+  border-radius:14px;padding:14px 16px;
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:start;gap:14px;
+}
+.perm-ico{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(0,200,240,.07);border:1px solid rgba(0,200,240,.14);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex:0 0 auto;
+}
+.perm-name{font-size:13px;font-weight:600;color:var(--w);margin-bottom:4px}
+.perm-desc{font-size:12px;color:var(--m);line-height:1.55;font-weight:300}
+.perm-badge{
+  font-size:10px;font-weight:700;
+  padding:3px 9px;border-radius:7px;
+  white-space:nowrap;flex:0 0 auto;
+}
+.perm-badge.required{
+  background:rgba(0,200,240,.10);color:var(--c);
+  border:1px solid rgba(0,200,240,.2);
+}
+.perm-badge.optional{
+  background:rgba(40,217,138,.10);color:var(--g);
+  border:1px solid rgba(40,217,138,.2);
+}
+.perm-badge.sensitive{
+  background:rgba(245,166,35,.10);color:var(--a);
+  border:1px solid rgba(245,166,35,.2);
+}
+
+/* DATA TABLE */
+.data-table{
+  width:100%;border-collapse:collapse;margin:16px 0;
+  font-size:13px;
+}
+.data-table th{
+  font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--d);padding:10px 14px;
+  border-bottom:1px solid var(--line2);text-align:left;
+}
+.data-table td{
+  padding:12px 14px;color:var(--m);font-weight:300;
+  border-bottom:1px solid var(--line);vertical-align:top;
+  line-height:1.55;
+}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:rgba(255,255,255,.015)}
+.tag-no{
+  font-size:10px;font-weight:700;
+  padding:2px 8px;border-radius:5px;
+  background:rgba(40,217,138,.10);color:var(--g);
+  border:1px solid rgba(40,217,138,.2);
+}
+.tag-local{
+  font-size:10px;font-weight:700;
+  padding:2px 8px;border-radius:5px;
+  background:rgba(0,200,240,.10);color:var(--c);
+  border:1px solid rgba(0,200,240,.2);
+}
+.tag-firebase{
+  font-size:10px;font-weight:700;
+  padding:2px 8px;border-radius:5px;
+  background:rgba(245,166,35,.10);color:var(--a);
+  border:1px solid rgba(245,166,35,.2);
+}
+
+/* CONTACT CARD */
+.contact-card{
+  background:var(--surf);border:1px solid var(--line2);
+  border-radius:22px;padding:28px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  margin-top:16px;
+}
+.contact-card h3{
+  font-family:var(--serif);font-size:22px;font-weight:400;
+  letter-spacing:-.02em;margin-bottom:5px;
+}
+.contact-card p{font-size:13px;color:var(--m);font-weight:300}
+.contact-card a{color:var(--c)}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  padding:34px 0;
+}
+.foot{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;flex-wrap:wrap;
+}
+.foot-brand{display:flex;align-items:center;gap:9px}
+.foot-brand img{width:22px;height:22px;border-radius:7px;object-fit:contain}
+.foot-brand span{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.foot-copy{font-size:11px;color:var(--d);margin-top:3px}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-links a{font-size:12px;color:var(--d);transition:color .2s;text-decoration:none}
+.foot-links a:hover{color:var(--w)}
+
+/* REVEAL */
+.rv{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.04s}.d2{transition-delay:.10s}.d3{transition-delay:.17s}
+.d4{transition-delay:.24s}.d5{transition-delay:.31s}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  .pp-content{grid-template-columns:1fr}
+  .pp-toc{display:none}
+  .summary-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .w{padding:0 20px}
+  .nav-pill{margin:10px 14px 0;padding:0 16px;height:50px}
+  .summary-grid{grid-template-columns:1fr}
+  .pp-hero h1{font-size:36px}
+  .perm-card{grid-template-columns:auto 1fr;gap:10px}
+  .perm-badge{display:none}
+  .contact-card{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-layer" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<div class="page">
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-pill">
+    <a class="brand" href="index.html">
+      <img src="AveroLogo.png" alt="Avero" class="brand-img"/>
+      <span class="brand-name">Avero</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:9px">
+      <a class="btn btn-ghost" href="index.html" style="font-size:12px;padding:8px 16px">← Back to site</a>
+      <a class="btn btn-c" href="https://play.google.com/store/apps/details?id=com.mariusarzoiu.avero" target="_blank" rel="noopener">Download free</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="w">
+  <div class="pp-hero">
+    <div class="pp-tag rv d1"><div class="pp-tag-dot"></div>Legal</div>
+    <h1 class="rv d2">Privacy <em>Policy.</em></h1>
+    <p class="pp-hero-sub rv d3">
+      Short version: Avero processes everything on your device. No data is sold, no accounts are required for core features, and your links and passwords never leave your phone.
+    </p>
+    <div class="pp-meta rv d4">
+      <div class="pp-pill"><div class="pp-pill-dot"></div>Effective: February 10, 2026</div>
+      <div class="pp-pill"><div class="pp-pill-dot"></div>App: com.mariusarzoiu.avero</div>
+      <div class="pp-pill"><div class="pp-pill-dot"></div>Developer: NextByteStudios</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY CARDS -->
+<div class="w">
+  <div class="summary-grid">
+    <div class="scard rv d1">
+      <div class="scard-ico">🔒</div>
+      <div class="scard-title">100% On-device AI</div>
+      <div class="scard-desc">All link scanning, password analysis, and OCR runs locally. No URLs or passwords are transmitted.</div>
+    </div>
+    <div class="scard rv d2">
+      <div class="scard-ico">🚫</div>
+      <div class="scard-title">No ads, no tracking</div>
+      <div class="scard-desc">Avero contains no advertising SDKs and does not track your behaviour for marketing purposes.</div>
+    </div>
+    <div class="scard rv d3">
+      <div class="scard-ico">☁️</div>
+      <div class="scard-title">Optional cloud (account only)</div>
+      <div class="scard-desc">Firebase is used only if you create an account. Core features work completely offline without one.</div>
+    </div>
+  </div>
+</div>
+
+<hr style="border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12) 30%,rgba(255,255,255,.12) 70%,transparent);margin:0"/>
+
+<!-- MAIN CONTENT -->
+<div class="w">
+  <div class="pp-content">
+
+    <!-- TOC -->
+    <nav class="pp-toc" aria-label="Table of contents">
+      <div class="pp-toc-title">Contents</div>
+      <a class="toc-link" href="#overview">Overview</a>
+      <a class="toc-link" href="#permissions">Permissions</a>
+      <a class="toc-link" href="#sms">SMS & Notifications</a>
+      <a class="toc-link" href="#camera">Camera & QR</a>
+      <a class="toc-link" href="#firebase">Firebase & Account</a>
+      <a class="toc-link" href="#data-table">Data summary</a>
+      <a class="toc-link" href="#local">Local storage</a>
+      <a class="toc-link" href="#network">Network access</a>
+      <a class="toc-link" href="#third-party">Third parties</a>
+      <a class="toc-link" href="#children">Children</a>
+      <a class="toc-link" href="#security">Security</a>
+      <a class="toc-link" href="#rights">Your rights</a>
+      <a class="toc-link" href="#deletion">Account deletion</a>
+      <a class="toc-link" href="#changes">Policy changes</a>
+      <a class="toc-link" href="#contact">Contact</a>
+    </nav>
+
+    <!-- SECTIONS -->
+    <div class="pp-sections">
+
+      <!-- 1 Overview -->
+      <div class="pp-section rv" id="overview">
+        <div class="section-num">01 — Overview</div>
+        <h2>What Avero <em>is</em></h2>
+        <p>Avero is a personal security assistant for Android that detects phishing links, checks password strength, and monitors incoming messages for suspicious URLs. The core engine runs entirely on your device using a TFLite neural network trained on 530,000 real phishing URLs.</p>
+        <p>This Privacy Policy applies to the Avero Android application (<code>com.mariusarzoiu.avero</code>) published by NextByteStudios (Marius Arzoiu) and the associated website at <a href="https://avero.nextbytestudios.com">avero.nextbytestudios.com</a>.</p>
+        <div class="callout green">
+          <div class="callout-title">✓ Privacy-first design</div>
+          Your URLs, passwords, and SMS messages are never uploaded to any server. All risk analysis happens locally and the results remain on your device.
+        </div>
+      </div>
+
+      <!-- 2 Permissions -->
+      <div class="pp-section rv" id="permissions">
+        <div class="section-num">02 — Permissions</div>
+        <h2>What permissions<br/><em>Avero requests</em></h2>
+        <p>Avero requests only the permissions necessary to deliver its security features. Below is a full explanation of each permission, why it is needed, and how the data is used.</p>
+        <div class="perm-grid">
+          <div class="perm-card">
+            <div class="perm-ico">📱</div>
+            <div>
+              <div class="perm-name">READ_SMS / RECEIVE_SMS</div>
+              <div class="perm-desc">Allows Avero to read incoming SMS messages to detect phishing links. Message content is processed locally and never transmitted. See Section 3 for full details.</div>
+            </div>
+            <div class="perm-badge sensitive">Sensitive</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-ico">🔔</div>
+            <div>
+              <div class="perm-name">BIND_NOTIFICATION_LISTENER_SERVICE</div>
+              <div class="perm-desc">Allows Avero to read notification content from other apps to detect phishing links in real time. Only URL-like patterns are extracted; no other content is stored.</div>
+            </div>
+            <div class="perm-badge sensitive">Sensitive</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-ico">📷</div>
+            <div>
+              <div class="perm-name">CAMERA</div>
+              <div class="perm-desc">Used exclusively for QR code scanning. The camera feed is processed on-device by ML Kit to extract URLs. No images are saved or transmitted.</div>
+            </div>
+            <div class="perm-badge optional">Optional</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-ico">🌐</div>
+            <div>
+              <div class="perm-name">INTERNET</div>
+              <div class="perm-desc">Required for Firebase Authentication (optional account), Firestore sync (optional), and optional redirect-chain checks. Core scanning works offline.</div>
+            </div>
+            <div class="perm-badge required">Required</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-ico">🔋</div>
+            <div>
+              <div class="perm-name">FOREGROUND_SERVICE / RECEIVE_BOOT_COMPLETED</div>
+              <div class="perm-desc">Allows the background protection service to start automatically and run continuously so Avero can monitor SMS and notifications even when the app is not open.</div>
+            </div>
+            <div class="perm-badge required">Required</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-ico">🔐</div>
+            <div>
+              <div class="perm-name">USE_BIOMETRIC / USE_FINGERPRINT</div>
+              <div class="perm-desc">Used for optional biometric app lock. Biometric data is handled entirely by Android's BiometricPrompt API and never accessed or stored by Avero.</div>
+            </div>
+            <div class="perm-badge optional">Optional</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 SMS -->
+      <div class="pp-section rv" id="sms">
+        <div class="section-num">03 — SMS & Notifications</div>
+        <h2>How SMS and notifications<br/><em>are handled</em></h2>
+        <p>Avero is classified as an <strong>Anti-SMS phishing</strong> application. The <code>READ_SMS</code> and <code>RECEIVE_SMS</code> permissions are used solely to scan incoming messages for malicious URLs.</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>SMS text content is read in memory, processed by the on-device model, and then discarded.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Only extracted URLs and their risk scores are stored locally in your scan history.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>No SMS message body, sender information, or contact data is ever uploaded or shared.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>The Notification Listener Service similarly extracts only URL strings from notification text — no app name, sender, or message content is retained.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>You are shown a clear disclosure screen before Avero requests SMS or Notification Listener access, explaining exactly why each permission is needed.</li>
+        </ul>
+        <div class="callout amber">
+          <div class="callout-title">⚠ You are in control</div>
+          SMS and Notification Listener access can be revoked at any time in Android Settings → Apps → Avero → Permissions. Revoking these permissions disables auto-protection but all other features remain fully functional.
+        </div>
+      </div>
+
+      <!-- 4 Camera / QR -->
+      <div class="pp-section rv" id="camera">
+        <div class="section-num">04 — Camera & QR</div>
+        <h2>Camera access and<br/><em>QR scanning</em></h2>
+        <p>Avero uses the device camera exclusively for QR code scanning. When you open the QR scanner, the live camera feed is processed frame-by-frame on your device using Google ML Kit's Barcode Scanning library.</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>No photos or video are saved to your device or uploaded anywhere.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>The camera is only active while the QR scanner screen is open and automatically stops when you leave.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>When a QR code is detected, only the decoded URL string is passed to the phishing analysis engine — not the image frame.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Camera permission is optional. If denied, all other features continue to work normally.</li>
+        </ul>
+        <div class="callout cyan">
+          <div class="callout-title">ℹ On-device processing</div>
+          QR decoding uses Google ML Kit running locally. No camera frames or decoded data are sent to Google or any other server as part of the Avero scanning flow.
+        </div>
+      </div>
+
+      <!-- 5 Firebase -->
+      <div class="pp-section rv" id="firebase">
+        <div class="section-num">05 — Firebase & Account</div>
+        <h2>Firebase, accounts,<br/><em>and cloud data</em></h2>
+        <p>Avero uses Google Firebase for optional account features. <strong>No account is required</strong> to use link scanning, password checking, QR scanning, image OCR, or security courses — these all work fully offline.</p>
+        <p>If you choose to create an account, the following data is collected and stored in Firebase:</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Firebase Authentication:</strong> Your email address and a hashed password (or OAuth token if using Google Sign-In). Used only for identity verification.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Firestore Database:</strong> App settings and preferences you choose to sync across devices. Scan history sync (if enabled). No SMS content, no passwords, no camera data.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Website waitlist:</strong> If you sign up on avero.nextbytestudios.com, your email is stored in Firestore solely to notify you of Pro plan availability.</li>
+        </ul>
+        <p>Firebase services are provided by Google LLC and are subject to <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. Data is stored on Google Cloud infrastructure in the EU region where possible.</p>
+        <div class="callout amber">
+          <div class="callout-title">⚠ Google Play Services</div>
+          Avero uses Google Play Services for distribution and basic functionality (Firebase, ML Kit). Google may collect device identifiers and diagnostic data according to their own privacy policy, independent of Avero.
+        </div>
+      </div>
+
+      <!-- 6 Data Summary Table -->
+      <div class="pp-section rv" id="data-table">
+        <div class="section-num">06 — Data Summary</div>
+        <h2>What data goes <em>where</em></h2>
+        <p>A complete breakdown of every data type Avero touches and how it is handled.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Data type</th>
+              <th>Collected</th>
+              <th>Stored</th>
+              <th>Transmitted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>URLs you scan manually</td>
+              <td>In memory only</td>
+              <td><span class="tag-local">Local history</span></td>
+              <td><span class="tag-no">Never</span></td>
+            </tr>
+            <tr>
+              <td>Passwords you check</td>
+              <td>In memory only</td>
+              <td><span class="tag-no">Never stored</span></td>
+              <td><span class="tag-no">Never</span></td>
+            </tr>
+            <tr>
+              <td>SMS message bodies</td>
+              <td>In memory only</td>
+              <td><span class="tag-no">Never stored</span></td>
+              <td><span class="tag-no">Never</span></td>
+            </tr>
+            <tr>
+              <td>URLs extracted from SMS</td>
+              <td>Yes</td>
+              <td><span class="tag-local">Local history</span></td>
+              <td><span class="tag-no">Never</span></td>
+            </tr>
+            <tr>
+              <td>Notification content</td>
+              <td>In memory only</td>
+              <td><span class="tag-no">Never stored</span></td>
+              <td><span class="tag-no">Never</span></td>
+            </tr>
+            <tr>
+              <td>Camera / QR frames</td>
+              <td>In memory only</td>
+              <td><span class="tag-no">Never stored</span></td>
+              <td><span class="tag-no">Never</span></td>
+            </tr>
+            <tr>
+              <td>Images you scan (OCR)</td>
+              <td>In memory only</td>
+              <td><span class="tag-no">Never stored</span></td>
+              <td><span class="tag-no">Never</span></td>
+            </tr>
+            <tr>
+              <td>Email address (account)</td>
+              <td>If you register</td>
+              <td><span class="tag-firebase">Firebase Auth</span></td>
+              <td>Firebase servers</td>
+            </tr>
+            <tr>
+              <td>App preferences (account)</td>
+              <td>If you register</td>
+              <td><span class="tag-firebase">Firestore</span></td>
+              <td>Firebase servers</td>
+            </tr>
+            <tr>
+              <td>Crash & diagnostic data</td>
+              <td>Anonymised</td>
+              <td>Google Play</td>
+              <td>Google servers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 7 Local Storage -->
+      <div class="pp-section rv" id="local">
+        <div class="section-num">07 — Local Storage</div>
+        <h2>Data stored <em>on your device</em></h2>
+        <p>Avero stores the following data locally on your device using Android's Room database and DataStore:</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Scan history:</strong> URLs you have scanned, their risk scores, verdicts, timestamps, and source (manual, SMS, notification, QR, image).</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>App preferences:</strong> Theme, notification settings, biometric lock preference.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Course progress:</strong> Which security lessons and quizzes you have completed.</li>
+        </ul>
+        <p>All local data can be erased at any time by going to <strong>Android Settings → Apps → Avero → Storage → Clear Data</strong>, or by uninstalling the app.</p>
+      </div>
+
+      <!-- 8 Network -->
+      <div class="pp-section rv" id="network">
+        <div class="section-num">08 — Network Access</div>
+        <h2>When Avero<br/><em>uses the internet</em></h2>
+        <p>The core features of Avero — link scanning, password checking, QR scanning, and image OCR — work entirely offline. Network access is used only for the following optional or background functions:</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Firebase Authentication and Firestore sync (only if you have an account).</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Optional redirect-chain following (to check if a short URL leads to a known malicious domain). This can be disabled in settings.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Google Play Services background operations (handled by Android, not Avero).</li>
+        </ul>
+      </div>
+
+      <!-- 9 Third Parties -->
+      <div class="pp-section rv" id="third-party">
+        <div class="section-num">09 — Third Parties</div>
+        <h2>Third-party<br/><em>services used</em></h2>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Google Firebase</strong> (Auth + Firestore) — for optional account features. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy →</a></li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Google ML Kit</strong> (Text Recognition, Barcode Scanning) — runs entirely on-device, no data sent to Google.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Google LiteRT / TensorFlow Lite</strong> — the phishing detection model runs locally, no data transmitted.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Google Play Services</strong> — for app distribution, crash reporting, and authentication. Subject to Google's privacy policy.</li>
+        </ul>
+        <p>Avero contains <strong>no advertising SDKs</strong> and does not share data with analytics or marketing platforms.</p>
+      </div>
+
+      <!-- 10 Children -->
+      <div class="pp-section rv" id="children">
+        <div class="section-num">10 — Children</div>
+        <h2>Children's <em>privacy</em></h2>
+        <p>Avero is not directed at children under the age of 13 (or 16 in the European Union). We do not knowingly collect personal information from children. If you believe a child has provided personal data through Avero, please contact us and we will delete it promptly.</p>
+      </div>
+
+      <!-- 11 Security -->
+      <div class="pp-section rv" id="security">
+        <div class="section-num">11 — Security</div>
+        <h2>How we protect<br/><em>your data</em></h2>
+        <p>Because the majority of Avero's processing is on-device, the attack surface for your personal data is minimal. For the data that does reach Firebase (email, preferences), we rely on Google Cloud's security infrastructure, including encryption at rest and in transit.</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>All Firebase communication is over HTTPS/TLS.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Firestore security rules restrict access so only authenticated users can read or write their own data.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>No method of transmission or storage is 100% secure; we recommend not storing sensitive personal information in the app.</li>
+        </ul>
+      </div>
+
+      <!-- 12 Your Rights -->
+      <div class="pp-section rv" id="rights">
+        <div class="section-num">12 — Your Rights</div>
+        <h2>Your data <em>rights</em></h2>
+        <p>Depending on your jurisdiction, you may have the right to access, correct, or delete your personal data. You can exercise these rights at any time:</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Local data:</strong> Clear it via Android Settings → Apps → Avero → Storage → Clear Data.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Account data:</strong> Delete your account (see Section 13) or contact us to request a copy of your data.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Permissions:</strong> Revoke any Android permission at any time in device Settings without losing access to unrelated features.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Waitlist email:</strong> Reply to any waitlist email with "unsubscribe" and your data will be deleted within 48 hours.</li>
+        </ul>
+      </div>
+
+      <!-- 13 Account Deletion -->
+      <div class="pp-section rv" id="deletion">
+        <div class="section-num">13 — Account Deletion</div>
+        <h2>How to delete<br/><em>your account</em></h2>
+        <p>If you have created an account in Avero, you have the right to permanently delete your account and all associated personal data stored in Firebase.</p>
+        <ul>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>In-app:</strong> Go to Settings → Account → Delete Account. This immediately removes your Firebase Auth record and all Firestore data.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>By email:</strong> Send a deletion request to <a href="mailto:nextbytestudioscontact@gmail.com">nextbytestudioscontact@gmail.com</a> with the email address linked to your account.</li>
+          <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Deletion is permanent and completed within <strong>7 days</strong> of verification. This action cannot be undone.</li>
+        </ul>
+        <div class="callout cyan">
+          <div class="callout-title">ℹ Google Play requirement</div>
+          In compliance with Google Play's data deletion policy, this deletion option is also accessible at: <a href="https://avero.nextbytestudios.com/privacy-policy.html" target="_blank">avero.nextbytestudios.com/privacy-policy.html</a>
+        </div>
+      </div>
+
+      <!-- 14 Changes -->
+      <div class="pp-section rv" id="changes">
+        <div class="section-num">14 — Policy Changes</div>
+        <h2>Updates to this <em>policy</em></h2>
+        <p>We may update this Privacy Policy as Avero adds new features. When we make material changes, we will update the effective date at the top of this document and, where appropriate, notify you via an in-app notice or email.</p>
+        <p>Continued use of Avero after a policy update constitutes acceptance of the revised policy. We encourage you to review this page periodically.</p>
+      </div>
+
+      <!-- 15 Contact -->
+      <div class="pp-section rv" id="contact">
+        <div class="section-num">15 — Contact</div>
+        <h2>Questions or<br/><em>concerns?</em></h2>
+        <p>If you have any questions about this Privacy Policy or how your data is handled, please reach out:</p>
+        <div class="contact-card">
+          <div>
+            <h3>Get in touch</h3>
+            <p>We respond within 24 hours on business days.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;min-width:240px">
+            <div style="font-size:13px;color:var(--m)"><span style="color:var(--d);font-size:11px;text-transform:uppercase;letter-spacing:.07em">Email</span><br/><a href="mailto:nextbytestudioscontact@gmail.com">nextbytestudioscontact@gmail.com</a></div>
+            <div style="font-size:13px;color:var(--m)"><span style="color:var(--d);font-size:11px;text-transform:uppercase;letter-spacing:.07em">Developer</span><br/>Marius Arzoiu · NextByteStudios · Romania</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .pp-sections -->
+  </div><!-- .pp-content -->
+</div><!-- .w -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="w" style="max-width:1100px">
+    <div class="foot">
+      <div>
+        <div class="foot-brand">
+          <img src="AveroLogo.png" alt="Avero"/>
+          <span>Avero</span>
+        </div>
+        <div class="foot-copy">© <span id="yr"></span> Avero · NextByteStudios · Marius Arzoiu</div>
+      </div>
+      <div class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="#top">↑ Top</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- .page -->
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Nav hide on scroll */
+const nav = document.getElementById('nav');
+let last = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('hide', y > last && y > 100);
+  last = y;
+}, {passive: true});
+
+/* Reveal on scroll */
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, {threshold: 0.06});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+/* Active TOC link */
+const sections = document.querySelectorAll('.pp-section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+const tocObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if(e.isIntersecting){
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+      if(active) active.classList.add('active');
+    }
+  });
+}, {rootMargin: '-20% 0px -70% 0px'});
+sections.forEach(s => tocObs.observe(s));
+</script>
+
+</body>
+</html>
