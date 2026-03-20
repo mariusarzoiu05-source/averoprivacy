@@ -438,7 +438,7 @@ footer{
       Short version: Avero processes everything on your device. No data is sold, no accounts are required for core features, and your links and passwords never leave your phone.
     </p>
     <div class="pp-meta rv d4">
-      <div class="pp-pill"><div class="pp-pill-dot"></div>Effective: February 10, 2026</div>
+      <div class="pp-pill"><div class="pp-pill-dot"></div>Effective: March 20, 2026</div>
       <div class="pp-pill"><div class="pp-pill-dot"></div>App: com.mariusarzoiu.avero</div>
       <div class="pp-pill"><div class="pp-pill-dot"></div>Developer: NextByteStudios</div>
     </div>
@@ -479,6 +479,7 @@ footer{
       <a class="toc-link" href="#permissions">Permissions</a>
       <a class="toc-link" href="#sms">SMS & Notifications</a>
       <a class="toc-link" href="#camera">Camera & QR</a>
+      <a class="toc-link" href="#wifi">Wi-Fi Security</a>
       <a class="toc-link" href="#firebase">Firebase & Account</a>
       <a class="toc-link" href="#data-table">Data summary</a>
       <a class="toc-link" href="#local">Local storage</a>
@@ -561,6 +562,30 @@ footer{
             </div>
             <div class="perm-badge optional">Optional</div>
           </div>
+          <div class="perm-card">
+  <div class="perm-ico">📍</div>
+  <div>
+    <div class="perm-name">ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</div>
+    <div class="perm-desc">Required by Android to scan nearby Wi-Fi networks. Location data is used solely to retrieve Wi-Fi scan results — Avero does not track, store, or transmit your physical location.</div>
+  </div>
+  <div class="perm-badge sensitive">Sensitive</div>
+</div>
+<div class="perm-card">
+  <div class="perm-ico">📶</div>
+  <div>
+    <div class="perm-name">ACCESS_WIFI_STATE / CHANGE_WIFI_STATE / NEARBY_WIFI_DEVICES</div>
+    <div class="perm-desc">Used to read the list of nearby Wi-Fi networks and assess their security protocols (Open, WEP, WPA, WPA2, WPA3). No network data is transmitted externally.</div>
+  </div>
+  <div class="perm-badge required">Required</div>
+</div>
+<div class="perm-card">
+  <div class="perm-ico">🔋</div>
+  <div>
+    <div class="perm-name">REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</div>
+    <div class="perm-desc">Allows Avero to deliver instant Wi-Fi security alerts when you connect to an unsafe network, even when the app is in the background. You are prompted to grant this and can revoke it at any time.</div>
+  </div>
+  <div class="perm-badge optional">Optional</div>
+</div>
         </div>
       </div>
 
@@ -598,6 +623,28 @@ footer{
           QR decoding uses Google ML Kit running locally. No camera frames or decoded data are sent to Google or any other server as part of the Avero scanning flow.
         </div>
       </div>
+
+      <!-- 4b Wi-Fi Security -->
+<div class="pp-section rv" id="wifi">
+  <div class="section-num">04b — Wi-Fi Security</div>
+  <h2>Wi-Fi scanning and<br/><em>security alerts</em></h2>
+  <p>Avero includes a Wi-Fi Security feature that scans nearby wireless networks and evaluates their security protocols. When you connect to an insecure network, Avero can alert you via a notification.</p>
+  <ul>
+    <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Wi-Fi scanning requires <strong>Location permission</strong> as mandated by Android — this is a system requirement for all apps that access Wi-Fi scan results, not a choice by Avero.</li>
+    <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Avero does <strong>not</strong> collect, store, or transmit your physical location. The location permission is used exclusively to retrieve the Wi-Fi network list from Android.</li>
+    <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Scanned network names (SSIDs) and their security ratings are stored locally in your device's scan history for up to 30 days and are never transmitted to any server.</li>
+    <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Security alerts are generated entirely on-device by comparing the network's security protocol against known vulnerability classifications (Open = no encryption, WEP = deprecated, WPA = outdated).</li>
+    <li><div class="li-dot"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 5-5" stroke="var(--g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Background monitoring uses Android's <code>BroadcastReceiver</code> and <code>WorkManager</code> — both standard Android components with minimal battery impact.</li>
+  </ul>
+  <div class="callout green">
+    <div class="callout-title">✓ No location tracking</div>
+    Avero never records your GPS coordinates, physical address, or movement patterns. The location permission is a technical Android requirement for Wi-Fi scanning — nothing more.
+  </div>
+  <div class="callout amber">
+    <div class="callout-title">⚠ You are in control</div>
+    Location and Wi-Fi permissions can be revoked at any time in Android Settings → Apps → Avero → Permissions. Revoking them disables Wi-Fi scanning but all other Avero features continue to work normally.
+  </div>
+</div>
 
       <!-- 5 Firebase -->
       <div class="pp-section rv" id="firebase">
@@ -674,6 +721,21 @@ footer{
               <td><span class="tag-no">Never stored</span></td>
               <td><span class="tag-no">Never</span></td>
             </tr>
+
+            <tr>
+  <td>Wi-Fi network names (SSIDs)</td>
+  <td>Yes, on scan</td>
+  <td><span class="tag-local">Local history (30 days)</span></td>
+  <td><span class="tag-no">Never</span></td>
+</tr>
+<tr>
+  <td>Device location</td>
+  <td><span class="tag-no">Never</span></td>
+  <td><span class="tag-no">Never stored</span></td>
+  <td><span class="tag-no">Never</span></td>
+</tr>
+
+
             <tr>
               <td>Email address (account)</td>
               <td>If you register</td>
